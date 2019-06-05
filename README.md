@@ -13,3 +13,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT06 A Landscaping Process
 * BT07 Using Landscape Layers
 * BT08 Configuring a Tank
+* BT09 3rd Person Camera Control
