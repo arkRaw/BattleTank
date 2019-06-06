@@ -3,10 +3,7 @@
 
 #include "TankPlayerController.h"
 
-ATank* ATankPlayerController::GetTankControlled() const
-{
-	return Cast<ATank>(GetPawn());
-}
+
 
 void ATankPlayerController::BeginPlay()
 {
@@ -20,4 +17,22 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController possesing : %s"),*ControlledTank->GetName())
 	}
+}
+
+ATank* ATankPlayerController::GetTankControlled() const
+{
+	return Cast<ATank>(GetPawn());
+}
+
+
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+	if (!GetTankControlled()) { return; }
+	
 }
