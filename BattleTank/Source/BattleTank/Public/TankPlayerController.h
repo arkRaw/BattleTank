@@ -18,4 +18,5 @@ public:
 	virtual void BeginPlay() override;
 	void Tick(float DeltaTime) override;
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 };
