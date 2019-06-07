@@ -2,7 +2,7 @@
 
 
 #include "TankPlayerController.h"
-
+#include "Engine/World.h"
 
 
 void ATankPlayerController::BeginPlay()
@@ -34,14 +34,18 @@ void ATankPlayerController::Tick(float DeltaTime)
 void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetTankControlled()) { return; }
-	FVector HitLocation = FVector(1.0); // Out Location
-	if (GetSightRayHitLocation(HitLocation))
+	FVector OutHitLocation;
+	if (GetSightRayHitLocation(OutHitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString())
+		// UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *OutHitLocation.ToString())
 	}
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector & OutHitLocation) const
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
+	// Find the crosshair position in pixel co-ordinates
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	FVector2D ScreenLocation(ViewportSizeX*CrossHairXLocation,ViewportSizeY*CrossHairYLocation);
 	return true;
 }
