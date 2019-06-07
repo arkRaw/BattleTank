@@ -26,3 +26,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT19 Creating an Out Parameter Method
 * BT20 Finding Screen Pixel Coordinates
 * BT21 Using DeprojectScreenToWorld & LineTraceSingleByChannel
+* BT22 Create Default Subobjects in C++
