@@ -28,3 +28,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT21 Using DeprojectScreenToWorld & LineTraceSingleByChannel
 * BT22 Create Default Subobjects in C++
 * BT23 BlueprintCallable()
+* BT24 SuggestProjectileVelocity()
