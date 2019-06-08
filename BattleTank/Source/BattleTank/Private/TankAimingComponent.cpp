@@ -3,6 +3,7 @@
 
 #include "TankAimingComponent.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
+#include "Engine/World.h"
 
 
 // Sets default values for this component's properties
@@ -45,17 +46,26 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 
 	FVector OutLaunchVelocity;
 	if (!Barrel) { return; }
-	if (UGameplayStatics::SuggestProjectileVelocity(
+	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
+	(
 		this,
 		OutLaunchVelocity, StartLocation, OutHitLocation,
 		LaunchSpeed,
-		false,
-		0,
-		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
-	)) {
+	);
+	if (bHaveAimSolution) {
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *AimDirection.ToString())
-		return;
+	//		FRotator BarrelRotation= GetWorld()->GetFirstPlayerController()->PlayerCameraManager->GetCameraRotation();
+	//	Barrel->SetRelativeRotation(BarrelRotation);
+		MoveBarrelTowards(AimDirection);
 	}
+}
+
+void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+{
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto AimAsRotator = AimDirection.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	
 }
