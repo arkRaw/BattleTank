@@ -35,3 +35,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT28 BlueprintSpawnableComponent()
 * BT29 Turret Rotation
 * BT30 Setting Up Projectiles
+* BT31 Projectile Movements Components
