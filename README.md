@@ -34,3 +34,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT27 Using Forward Declarations
 * BT28 BlueprintSpawnableComponent()
 * BT29 Turret Rotation
+* BT30 Setting Up Projectiles

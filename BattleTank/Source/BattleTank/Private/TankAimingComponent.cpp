@@ -72,19 +72,6 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 		
 		MoveTurretTowards(AimDirection);
 		MoveBarrelTowards(AimDirection);
-
-		float Time = GetWorld()->GetTimeSeconds();
-
-		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found OutHitLocation:%s"), Time,*OutHitLocation.ToString())
-
-	//		FRotator BarrelRotation= GetWorld()->GetFirstPlayerController()->PlayerCameraManager->GetCameraRotation();
-	//	Barrel->SetRelativeRotation(BarrelRotation);
-		
-	}
-	if(!bHaveAimSolution) {
-		float Time = GetWorld()->GetTimeSeconds();
-
-		UE_LOG(LogTemp, Warning, TEXT("%f: No solution found"), Time)
 	}
 }
 
