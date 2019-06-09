@@ -32,6 +32,9 @@ public:
 
 	void AimAt(FVector OutHitLocation);
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Fire();
+
 private:
 
 	UFUNCTION(BlueprintCallable,Category=Setup)
@@ -40,14 +43,15 @@ private:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void Fire();
+	
 
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float LaunchSpeed = 100000.f;
+	float LaunchSpeed = 4000.f;
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeInSeconds = 3.f;
 };

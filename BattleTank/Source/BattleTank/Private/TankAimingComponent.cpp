@@ -53,7 +53,7 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 
 	FVector OutLaunchVelocity;
 	if (!Barrel) { return; }
-	if (!Turret) { return; }
+	//if (!Turret) { return; }
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 	(
 		this,
@@ -69,8 +69,7 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 	if (bHaveAimSolution)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		
-		MoveTurretTowards(AimDirection);
+
 		MoveBarrelTowards(AimDirection);
 	}
 }
@@ -82,12 +81,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	
 	Barrel->Elevate(DeltaRotator.Pitch);
-}
-
-void UTankAimingComponent::MoveTurretTowards(FVector AimDirection)
-{
-	auto BarrelRotator = Turret->GetForwardVector().Rotation();
-	auto AimAsRotator = AimDirection.Rotation();
-	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	Turret->Azimuth(DeltaRotator.Yaw);
 }
+

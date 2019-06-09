@@ -54,7 +54,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 		// line trace along the look direction upto max range
 		if (GetLookVectorHitLocation(LookDirection, OutHitLocation))
 		{
-			// UE_LOG(LogTemp, Warning, TEXT("OutHitLocation: %s"), *OutHitLocation.ToString())
 		}
 	}
 	return true;
