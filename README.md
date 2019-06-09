@@ -33,3 +33,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT26 Using FRotators in Unreal
 * BT27 Using Forward Declarations
 * BT28 BlueprintSpawnableComponent()
+* BT29 Turret Rotation
