@@ -9,7 +9,5 @@ void UTankTurret::Azimuth(float RelativeSpeed)
 	auto AzimuthChange = RelativeSpeed * MaxDegreesPerSecond*GetWorld()->DeltaTimeSeconds;
 	auto YawNewAzimuth = RelativeRotation.Yaw + AzimuthChange;
 
-	
-
 	SetRelativeRotation(FRotator(0, YawNewAzimuth,0));
 }
