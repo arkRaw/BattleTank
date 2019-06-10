@@ -44,3 +44,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT37 A Better Component Architecture
 * BT38 Completing Manual Tank Movement
 * BT39 Dissecting RequestDirectMove()
+* BT40 Move Tank Using Dot & Cross Products
