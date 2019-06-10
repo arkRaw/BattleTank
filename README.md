@@ -41,3 +41,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT34 Setup Track Throttles
 * BT35 Physics Materials & Friction
 * BT36 Using BlueprintReadOnly
+* BT37 ABetter Component Architecture
