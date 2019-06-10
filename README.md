@@ -43,3 +43,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT36 Using BlueprintReadOnly
 * BT37 A Better Component Architecture
 * BT38 Completing Manual Tank Movement
+* BT39 Dissecting RequestDirectMove()

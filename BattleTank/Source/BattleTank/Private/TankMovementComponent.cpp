@@ -25,3 +25,9 @@ void UTankMovementComponent::Initialse(UTankTrack * LeftTrackToSet, UTankTrack *
 	LeftTrack = LeftTrackToSet;
 	RightTrack = RightTrackToSet;
 }
+
+void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, bool bForceMaxSpeed)
+{
+	auto TankName = GetOwner()->GetName();
+	UE_LOG(LogTemp,Warning,TEXT("%s is moving at %s"),*TankName,*MoveVelocity.ToString())
+}
