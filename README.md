@@ -37,4 +37,5 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT30 Setting Up Projectiles
 * BT31 Projectile Movements Components
 * BT32 Making AI Tanks Fire
-* BT33 EditAnywhere to EditDefaultType
+* BT33 EditAnywhere to EditDefaultOnly
+* BT34 Setup Track Throttles

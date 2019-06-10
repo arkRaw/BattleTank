@@ -53,7 +53,7 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 
 	FVector OutLaunchVelocity;
 	if (!Barrel) { return; }
-	//if (!Turret) { return; }
+	
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 	(
 		this,
