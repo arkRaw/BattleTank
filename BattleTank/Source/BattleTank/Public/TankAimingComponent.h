@@ -33,7 +33,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(BlueprintReadonly, Category = "State")
-	EFiringStatus FiringState = EFiringStatus::Reloading;
+	EFiringStatus FiringState = EFiringStatus::Locked;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialse(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);

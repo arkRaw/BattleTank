@@ -49,3 +49,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT42 Using Blueprint Variables
 * BT43 Game is Compiling but HARD Crashing!
 * BT44 Contructor & Begin Play Timing
+* BT45 Decoupling Architecture & BlueprintImplementableEvent
