@@ -43,7 +43,6 @@ public:
 
 	void AimAt(FVector OutHitLocation,float LaunchSpeed);
 
-	UTankBarrel* GetTankBarrel();
 
 private:
 	UTankBarrel* Barrel = nullptr;

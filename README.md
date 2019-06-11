@@ -52,3 +52,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT45 Decoupling Architecture & BlueprintImplementableEvent
 * BT46 Using the ensure Assertion
 * BT47 Dependency Mapping
+* BT48 Starting from Green

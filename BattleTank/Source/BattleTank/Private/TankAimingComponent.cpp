@@ -68,11 +68,6 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 	}
 }
 
-UTankBarrel* UTankAimingComponent::GetTankBarrel()
-{
-	return Barrel;
-}
-
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	if (!Barrel || !Turret) { return; }
