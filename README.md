@@ -47,3 +47,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT40 Move Tank Using Dot & Cross Products
 * BT41 Finalising Class Code
 * BT42 Using Blueprint Variables
+* BT43 Game is Compiling but HARD Crashing!
