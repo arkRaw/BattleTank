@@ -52,6 +52,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UTankBarrel* Barrel = nullptr;
 	
 	double LastFireTime = 0;
 };

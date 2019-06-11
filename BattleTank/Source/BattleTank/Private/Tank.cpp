@@ -12,13 +12,15 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+	
+	UE_LOG(LogTemp,Warning,TEXT("%s DONKEY: Tank C++ Construct"),*GetName())
 }
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	UE_LOG(LogTemp,Warning,TEXT("DONKEY: %s C++ BeginPlay"),*GetName())
 }
 
 
@@ -31,6 +33,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::AimAt(FVector OutHitLocation)
 {
+	if (!TankAimingComponent) { return; }
 	TankAimingComponent->AimAt(OutHitLocation, LaunchSpeed);
 }
 
@@ -38,10 +41,10 @@ void ATank::AimAt(FVector OutHitLocation)
 void ATank::Fire()
 {
 		bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-	if (TankAimingComponent->GetTankBarrel() && isReloaded) {
+	if (Barrel && isReloaded) {
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint,
-			TankAimingComponent->GetTankBarrel()->GetSocketLocation(FName("Projectile")),
-			TankAimingComponent->GetTankBarrel()->GetSocketRotation(FName("Projectile")));
+			Barrel->GetSocketLocation(FName("Projectile")),
+			Barrel->GetSocketRotation(FName("Projectile")));
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
