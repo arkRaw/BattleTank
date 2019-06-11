@@ -46,3 +46,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT39 Dissecting RequestDirectMove()
 * BT40 Move Tank Using Dot & Cross Products
 * BT41 Finalising Class Code
+* BT42 Using Blueprint Variables
