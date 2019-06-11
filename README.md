@@ -51,3 +51,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT44 Contructor & Begin Play Timing
 * BT45 Decoupling Architecture & BlueprintImplementableEvent
 * BT46 Using the ensure Assertion
+* BT47 Dependency Mapping

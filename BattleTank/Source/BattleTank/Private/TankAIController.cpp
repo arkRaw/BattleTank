@@ -1,8 +1,9 @@
 // Copyright @ArvindRawat
 
 #include "TankAIController.h"
+#include "Tank.h"
 #include "Engine/World.h"
-
+// Depends on MovementComponent via pathfinding logic
 
 void ATankAIController::BeginPlay()
 {
