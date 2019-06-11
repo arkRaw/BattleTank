@@ -45,3 +45,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT38 Completing Manual Tank Movement
 * BT39 Dissecting RequestDirectMove()
 * BT40 Move Tank Using Dot & Cross Products
+* BT41 Finalising Class Code
