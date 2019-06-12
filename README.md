@@ -57,3 +57,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT50 Finishing the Refactoring
 * BT51 Changing CrossHair Colors
 * BT52 Programmatic Sideways Friction
+* BT53 Avoiding Bolean Flags
