@@ -1,4 +1,5 @@
 // Copyright @ArvindRawat
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -20,8 +21,8 @@ private:
 	float MaxDegreesPerSecond = 10;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float MinElevationDegrees = 0.f;
+	float MinElevationDegrees = 0;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float MaxElevationDegrees = 40.f;
+	float MaxElevationDegrees = 40;
 };

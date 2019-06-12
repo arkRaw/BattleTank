@@ -13,6 +13,7 @@ UTankAimingComponent::UTankAimingComponent()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
+	bWantsBeginPlay = true;// TODO What is THIS???
 	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
@@ -27,7 +28,7 @@ void UTankAimingComponent::BeginPlay()
 }
 
 
-EFiringState UTankAimingComponent::GetFiringState()
+EFiringState UTankAimingComponent::GetFiringState() const
 {
 	return FiringState;
 }
@@ -123,6 +124,6 @@ void UTankAimingComponent::Fire()
 bool UTankAimingComponent::IsBarrelMoving()
 {
 	if (!ensure(Barrel)) { return false; }
-	auto ForwardBarrel = Barrel->GetForwardVector().GetSafeNormal();
-	return !ForwardBarrel.Equals(AimDirection, 0.01);
+	auto BarrelForward = Barrel->GetForwardVector();
+	return !BarrelForward.Equals(AimDirection, 0.01);
 }

@@ -39,7 +39,7 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000.f;
 
-	bool GetLookDirection(FVector2D& ScreenLocation, FVector& LookDirection) const;
-	bool GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& OutHitLocation) const;
 
 };

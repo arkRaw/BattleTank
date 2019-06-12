@@ -24,7 +24,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetPawn()) { return; }
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
-	if (!ensure(GetPawn()) || !ensure(AimingComponent)) { return; }
+	if (!ensure(AimingComponent)) { return; }
 	FVector OutHitLocation;
 	if (GetSightRayHitLocation(OutHitLocation))
 	{
@@ -47,14 +47,14 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	return false;
 }
 
-bool ATankPlayerController::GetLookDirection(FVector2D & ScreenLocation, FVector & LookDirection) const
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const
 {
 	FVector  CameraWorldLocation;
 	// "De-project" the screen position to a world direction
 	return DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocation, LookDirection);
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection,FVector& OutHitLocation) const
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection,FVector& OutHitLocation) const
 {
 	FHitResult OutHitResult;
 	FVector StartLocation= PlayerCameraManager->GetCameraLocation();
@@ -74,6 +74,6 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection,FVec
 		OutHitLocation = OutHitResult.Location;
 		return true;
 	}
-	OutHitLocation = FVector(0.f);
+	OutHitLocation = FVector(0);
 	return false;
 }
