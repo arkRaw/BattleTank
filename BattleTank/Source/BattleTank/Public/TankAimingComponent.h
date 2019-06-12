@@ -6,7 +6,7 @@
 #include "TankAimingComponent.generated.h"
 
 UENUM()
-enum class EFiringStatus :uint8 
+enum class EFiringState :uint8 
 {
 	Reloading,
 	Aiming,
@@ -33,7 +33,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(BlueprintReadonly, Category = "State")
-	EFiringStatus FiringState = EFiringStatus::Reloading;
+	EFiringState FiringState = EFiringState::Reloading;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialse(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
@@ -46,6 +46,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
+
+	EFiringState GetFiringStatus();
 
 
 private:
