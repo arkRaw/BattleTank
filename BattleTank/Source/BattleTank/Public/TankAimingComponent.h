@@ -10,7 +10,8 @@ enum class EFiringState :uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 };
 
 // Forward Declarations
@@ -32,8 +33,6 @@ protected:
 	UPROPERTY(BlueprintReadonly, Category = "State")
 	EFiringState FiringState = EFiringState::Reloading;
 
-	
-
 public:	
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
@@ -46,10 +45,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+	int  GetNumberOfRounds() const;
+
 	EFiringState GetFiringState() const;
 
 
 private:
+
+	int NumberOfRounds = 3;
 
 	// Sets default values for this component's properties
 	UTankAimingComponent();
@@ -76,7 +80,7 @@ private:
 
 	double LastFireTime = 0;
 
-	void MoveBarrelTowards(FVector AimDirection);
+	void MoveBarrelTowards(FVector AimDirectionVector);
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
