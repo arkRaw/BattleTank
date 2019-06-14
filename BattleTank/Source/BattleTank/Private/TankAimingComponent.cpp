@@ -29,7 +29,7 @@ void UTankAimingComponent::BeginPlay()
 
 
 
-int UTankAimingComponent::GetNumberOfRounds() const
+int32 UTankAimingComponent::GetNumberOfRounds() const
 {
 	return NumberOfRounds;
 }

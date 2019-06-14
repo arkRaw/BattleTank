@@ -46,14 +46,14 @@ public:
 	void Fire();
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int  GetNumberOfRounds() const;
+	int32  GetNumberOfRounds() const;
 
 	EFiringState GetFiringState() const;
 
 
 private:
-
-	int NumberOfRounds = 3;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 NumberOfRounds = 20;
 
 	// Sets default values for this component's properties
 	UTankAimingComponent();
