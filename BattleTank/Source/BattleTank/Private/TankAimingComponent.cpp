@@ -4,7 +4,7 @@
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "Projectile.h"
-#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 
 

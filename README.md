@@ -65,3 +65,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT59 Introducing Particle Systems
 * BT60 Radial Forces & Caching
 * BT61 Optimization Using GetTimeManager
+* BT62 Using TakeDamage() on Actors
