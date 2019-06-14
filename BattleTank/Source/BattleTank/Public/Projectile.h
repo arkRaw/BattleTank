@@ -28,6 +28,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void LaunchProjectile(float Speed);
 
+	void OnTimerExpire();
+
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
 
@@ -43,7 +45,8 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	URadialForceComponent* ExplosionForce = nullptr;
 
-
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float DestroyDelay = 10.f;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent*HitComponent, AActor*OtherActor, UPrimitiveComponent*OtherComp, FVector NormalImpulse, const FHitResult&Hit);
