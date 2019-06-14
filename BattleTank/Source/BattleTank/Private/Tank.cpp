@@ -19,6 +19,7 @@ float ATank::GetHealthPercent() const
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+	CurrentHealth = StartingHealth;
 }
 
 
@@ -36,7 +37,7 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AC
 	CurrentHealth -= DamageToApply;
 	if (CurrentHealth <= 0)
 	{
-
+		OnDeath.Broadcast();
 	}
 	return DamageToApply;
 }
