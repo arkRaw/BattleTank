@@ -68,7 +68,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection,FVect
 		OutHitResult,
 		StartLocation,
 		EndLocation,
-		ECollisionChannel::ECC_Visibility
+		ECollisionChannel::ECC_Camera
 		)
 	)
 	{

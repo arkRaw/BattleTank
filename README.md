@@ -68,3 +68,4 @@ You're welcome to download, fork or do whatever else legal with all the files! T
 * BT62 Using TakeDamage() on Actors
 * BT63 Blueprintpure & Health Bars
 * BT64 Finishing Off
+* BT65 Attaching Actor to another by using Components
