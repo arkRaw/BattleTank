@@ -22,9 +22,6 @@ void USpawnPoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	/*auto NewActor = GetWorld()->SpawnActor<AActor>(SpawnClassBlueprint);
-	*/
 	auto NewActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClassBlueprint, GetComponentTransform());
 	UE_LOG(LogTemp, Warning, TEXT("After Spawn"))
 	if (!NewActor) { return; }
