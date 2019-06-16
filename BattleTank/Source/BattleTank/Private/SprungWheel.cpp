@@ -33,6 +33,7 @@ void ASprungWheel::SetupConstraint()
 	auto BodyRoot = Cast<UPrimitiveComponent>(GetAttachParentActor()->GetRootComponent());
 
 	if (!BodyRoot) { return; }
+	if (!MassWheelConstraint) { return; }
 	MassWheelConstraint->SetConstrainedComponents(BodyRoot, NAME_None, Wheel, NAME_None);
 }
 
