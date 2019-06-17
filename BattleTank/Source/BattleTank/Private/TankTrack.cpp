@@ -1,6 +1,8 @@
 // Copyright @ArvindRawat
 
 #include "TankTrack.h"
+#include "SprungWheel.h"
+#include "SpawnPoint.h"
 
 UTankTrack::UTankTrack()
 {
@@ -10,36 +12,36 @@ UTankTrack::UTankTrack()
 void UTankTrack::BeginPlay()
 {
 	Super::BeginPlay();
-	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
-}
-
-void UTankTrack::OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, FVector NormalImpulse, const FHitResult & Hit)
-{
-	DriveTrack();
-	ApplySidewaysForce();
-	CurrentThrottle = 0;
 }
 
 void  UTankTrack::SetThrottle(float Throttle)
 {
-	CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -1, +1);
-}
-void UTankTrack::DriveTrack()
-{
-	auto ForceApplied = GetForwardVector()*TrackMaxDrivingForce*CurrentThrottle;
-	auto ForceLocation = GetComponentLocation();
-	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
-	if (!ensure(TankRoot)) { return; }
-	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
+	auto CurrentThrottle = FMath::Clamp<float>(Throttle, -1, +1);
+	DriveTrack(CurrentThrottle);
 }
 
-
-void UTankTrack::ApplySidewaysForce()
+TArray<class ASprungWheel*> UTankTrack::GetWheels() const
 {
-	auto SlippageSpeed = FVector::DotProduct(GetComponentVelocity(), GetRightVector());
-	auto DeltaTime = GetWorld()->GetDeltaSeconds();
-	auto CorrectionAcceleration = -(SlippageSpeed / DeltaTime)*GetRightVector();
-	auto TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-	auto CorrectionForce = (TankRoot->GetMass()*CorrectionAcceleration) / 2;
-	TankRoot->AddForce(CorrectionForce);
+	TArray<USceneComponent*> OutSpawnPoints;
+	GetChildrenComponents(false, OutSpawnPoints);
+	TArray<ASprungWheel*> SprungWheels;
+	SprungWheels.Init(nullptr, OutSpawnPoints.Num());
+
+	for (int32 i = 0; i < SprungWheels.Num(); ++i)
+	{
+		SprungWheels[i] = (Cast<USpawnPoint>(OutSpawnPoints[i]))->GetSprungWheel();
+	}
+	
+	return SprungWheels;
+}
+
+void UTankTrack::DriveTrack(float CurrentThrottle)
+{
+	auto ForceApplied = TrackMaxDrivingForce*CurrentThrottle;
+	auto Wheels = GetWheels();
+	auto ForcePerWheel = ForceApplied / Wheels.Num();
+	for (auto Wheel : Wheels)
+	{
+		Wheel->AddDrivingForce(ForcePerWheel);
+	}
 }

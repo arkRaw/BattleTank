@@ -3,6 +3,7 @@
 
 #include "SpawnPoint.h"
 #include "Kismet/GameplayStatics.h"
+#include "SprungWheel.h"
 #include "Engine/World.h"
 
 // Sets default values for this component's properties
@@ -15,7 +16,6 @@ USpawnPoint::USpawnPoint()
 	// ...
 
 }
-
 
 // Called when the game starts
 void USpawnPoint::BeginPlay()
@@ -38,3 +38,7 @@ void USpawnPoint::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	// ...
 }
 
+ASprungWheel* USpawnPoint::GetSprungWheel()
+{
+	return Cast<ASprungWheel>(GetChildComponent(0)->GetOwner());
+}
