@@ -14,9 +14,16 @@ class BATTLETANK_API USpawnPoint : public USceneComponent
 	GENERATED_BODY()
 
 public:
-	ASprungWheel* GetSprungWheel();
+//	ASprungWheel* GetSprungWheel();
+
+	AActor* GetSpawnedActor() const;
 
 private:
+	
+	// UPROPERTY because Need to be tracked by Garbage Collection System
+	UPROPERTY()
+	AActor* SpawnedActor = nullptr;
+
 	// Sets default values for this component's properties
 	USpawnPoint();
 

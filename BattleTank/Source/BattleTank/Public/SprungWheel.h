@@ -25,6 +25,11 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+
+	float MaxForceMagnitudeThisFrame = 0;
+
+	void ApplyForce();
+
 	void SetupConstraint();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -40,4 +45,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UPhysicsConstraintComponent* AxleWheelConstraint = nullptr;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };

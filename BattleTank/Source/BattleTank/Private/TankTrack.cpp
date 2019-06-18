@@ -20,19 +20,26 @@ void  UTankTrack::SetThrottle(float Throttle)
 	DriveTrack(CurrentThrottle);
 }
 
-TArray<class ASprungWheel*> UTankTrack::GetWheels() const
+TArray<ASprungWheel*> UTankTrack::GetWheels() const
 {
-	TArray<USceneComponent*> OutSpawnPoints;
-	GetChildrenComponents(false, OutSpawnPoints);
-	TArray<ASprungWheel*> SprungWheels;
-	SprungWheels.Init(nullptr, OutSpawnPoints.Num());
+	TArray<ASprungWheel*> ResultArray;
+	TArray<USceneComponent*> Children;
+	GetChildrenComponents(true, Children);
 
-	for (int32 i = 0; i < SprungWheels.Num(); ++i)
+	for (const auto& Child : Children)
 	{
-		SprungWheels[i] = (Cast<USpawnPoint>(OutSpawnPoints[i]))->GetSprungWheel();
+		auto SpawnPointChild = Cast<USpawnPoint>(Child);
+		if (!SpawnPointChild) continue;
+
+		auto SpawnedChild = SpawnPointChild->GetSpawnedActor();
+
+		auto SprungWheel = Cast<ASprungWheel>(SpawnedChild);
+		if (!SprungWheel) continue;
+
+		ResultArray.Add(SprungWheel);
 	}
-	
-	return SprungWheels;
+
+	return ResultArray;
 }
 
 void UTankTrack::DriveTrack(float CurrentThrottle)

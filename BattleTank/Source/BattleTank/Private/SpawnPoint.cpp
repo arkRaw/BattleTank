@@ -3,8 +3,8 @@
 
 #include "SpawnPoint.h"
 #include "Kismet/GameplayStatics.h"
-#include "SprungWheel.h"
 #include "Engine/World.h"
+
 
 // Sets default values for this component's properties
 USpawnPoint::USpawnPoint()
@@ -22,11 +22,11 @@ void USpawnPoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto NewActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClassBlueprint, GetComponentTransform());
+	SpawnedActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClassBlueprint, GetComponentTransform());
 	UE_LOG(LogTemp, Warning, TEXT("After Spawn"))
-	if (!NewActor) { return; }
-	NewActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-	UGameplayStatics::FinishSpawningActor(NewActor, GetComponentTransform());
+	if (!SpawnedActor) { return; }
+	SpawnedActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+	UGameplayStatics::FinishSpawningActor(SpawnedActor, GetComponentTransform());
 }
 
 
@@ -38,7 +38,7 @@ void USpawnPoint::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	// ...
 }
 
-ASprungWheel* USpawnPoint::GetSprungWheel()
+AActor * USpawnPoint::GetSpawnedActor() const
 {
-	return Cast<ASprungWheel>(GetChildComponent(0)->GetOwner());
+	return SpawnedActor;
 }
